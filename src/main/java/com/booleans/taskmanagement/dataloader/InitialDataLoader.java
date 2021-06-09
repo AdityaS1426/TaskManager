@@ -64,7 +64,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
         User manager = new User(
                 "manager@mail.com",
                 "Manager",
-                "112233",
+                "112233", 
                 "images/admin.png");
         userService.createUser(manager);
         userService.changeRoleToAdmin(manager);
