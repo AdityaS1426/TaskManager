@@ -104,7 +104,7 @@ public class TaskController {
         taskService.setTaskCompleted(id);
         return "redirect:/tasks";
     }
-
+    //mappings for undone tasks
     @GetMapping("/task/unmark-done/{id}")
     public String setTaskNotCompleted(@PathVariable Long id) {
         taskService.setTaskNotCompleted(id);
