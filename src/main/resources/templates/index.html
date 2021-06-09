@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+    <title>Home</title>
+</head>
+
+<body>
+<header>
+    <!--/*/ <th:block th:include="fragments/header :: header('home')"></th:block> /*/-->
+</header>
+
+<main class="container">
+    <h1 class="display-4">Welcome to Task Manager</h1>
+    <p class="lead">This application will help you stay organized!</p>
+
+    <hr class="my-4">
+    <p>Most features require logging in. Users who are not authorized have access to the welcome screen, as well as the log in or registration page.</p>
+
+    <p>Admin (Teacher) Can:</p>
+    <ul>
+        <li>Create a task & assign a task to any user.</li>
+        <li>View a list of all users with the possibility to delete users.</li>
+        <li>View a list of all tasks with the possibility to edit or delete tasks.</li>
+    </ul>
+    <p>Common User (Student) Can:</p>
+    <ul>
+        <li>Create a task only for himself/herself.</li>
+        <li>View a list of all users with no actions allowed.</li>
+        <li>View a list of all tasks but edit or delete only tasks for which he/she is responsible.</li>
+    </ul>
+
+    <p>Every Authorized User Can:</p>
+    <ul>
+        <li>View his/her own profile.</li>
+        <li>Mark a task as completed/uncompleted.</li>
+
+    </ul>
+
+    <h2 class="my-second-header">Test Users:</h2>
+    <ul>
+        <li>manager@mail.com, Password: 112233</li>
+        <li>ann@mail.com, Password: 112233</li>
+        <li>mark@mail.com, Password: 112233</li>
+    </ul>
+</main>
+
+<footer class="footer">
+    <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+</footer>
+
+</body>
+</html>
