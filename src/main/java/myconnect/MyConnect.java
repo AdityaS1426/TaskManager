@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 
 public class MyConnect {
-    private static void useBearerToken(String bearerToken) {
+    public static JsonArray useBearerToken(String bearerToken) {
         BufferedReader reader = null;
         try {
             URL url = new URL("https://poway.instructure.com/api/v1/users/self/upcoming_events?access_token=");
@@ -30,22 +30,16 @@ public class MyConnect {
 
             JsonParser parser = new JsonParser();
             JsonArray jArray = parser.parse(response).getAsJsonArray();
-            for (JsonElement element : jArray)
-            {
-                if(element.isJsonObject())
-                {
-                    JsonObject title = element.getAsJsonObject();
-                    System.out.println("title: " + title.get("title"));
-                    JsonObject assignments = title.getAsJsonObject("assignment");
-                    System.out.println("due date: " + assignments.get("due_at"));
-                    System.out.println("points: " + assignments.get("points_possible"));
-                    System.out.println("allowed attempts: " + assignments.get("allowed_attempts"));
-                    System.out.println("");
-                }
-            }
+
+            return jArray;
+
+
+
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return new JsonArray();
     }
 
     public static void main(String args[]){
