@@ -13,7 +13,14 @@ import java.io.Serializable;
 
 
 public class MyConnect {
-    private static void useBearerToken(String bearerToken) {
+
+    private final static String praveenGump = "7~ftG9173DRIVR27rTJsvFpfO9nERzOWFlvb9fhf7MOtykEP1doD63DQXh9hszlyyW";
+
+    public static String getPraveenGump() {
+        return praveenGump;
+    }
+
+    public static String useBearerToken(String bearerToken) {
         BufferedReader reader = null;
         try {
             URL url = new URL("https://canvas.instructure.com/api/v1/courses");
@@ -33,13 +40,15 @@ public class MyConnect {
 
 
             System.out.println(gson.toJson(response));
-        } catch (Exception e) {
 
+            return response;
+        } catch (Exception e) {
+            return "";
         }
     }
 
     public static void main(String args[]){
-        useBearerToken("7~ftG9173DRIVR27rTJsvFpfO9nERzOWFlvb9fhf7MOtykEP1doD63DQXh9hszlyyW");
+        useBearerToken(praveenGump);
     }
 }
 
