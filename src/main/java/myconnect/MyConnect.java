@@ -30,7 +30,9 @@ public class MyConnect {
             String response = out.toString();
             Gson gson = new Gson();
 
-            System.out.println(response);
+
+
+            System.out.println(gson.toJson(response));
         } catch (Exception e) {
 
         }
