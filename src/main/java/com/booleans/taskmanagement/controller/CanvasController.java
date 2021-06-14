@@ -29,23 +29,23 @@ public class CanvasController {
         {
             if(element.isJsonObject())
             {
+                //object to be returned
+                JsonObject newObject = new JsonObject();
 
-                JsonObject jsonObject = new JsonObject();
-
+                //input converted to object
                 JsonObject object = element.getAsJsonObject();
 
-                jsonObject.add("title",object.get("title"));
+                newObject.add("title",object.get("title"));
 
                 JsonObject assignments = new JsonObject();
                 assignments.add("due_at", object.getAsJsonObject("assignment").get("due_at"));
                 assignments.add("points_possible", object.getAsJsonObject("assignment").get("points_possible"));
                 assignments.add("allowed_attempts", object.getAsJsonObject("assignment").get("allowed_attempts"));
 
-                jsonObject.add("assignments",assignments);
+                newObject.add("assignments",assignments);
 
-                jsonObject.add("assignment",object.get("assignment"));
 
-                model.addAttribute("canvasData",jsonObject);
+                model.addAttribute("canvasData",newObject);
                 break;
             }
         }
