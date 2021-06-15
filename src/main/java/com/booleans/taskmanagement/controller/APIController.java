@@ -14,32 +14,28 @@ import com.booleans.taskmanagement.service.TaskService;
 import java.util.List;
 
 @Controller
-public class IndexController {
+public class APIController {
 
     private UserService userService;
     private TaskService taskService;
 
     @Autowired
-    public IndexController(UserService userService, TaskService taskService) {
+    public APIController(UserService userService, TaskService taskService) {
         this.userService = userService;
         this.taskService = taskService;
     }
 
 
-    @RequestMapping("/")
-    String showIndex() {
-        return "index";
+
+    @RequestMapping("/allusers")
+    public ResponseEntity<List<User>> getAllUsers(){
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+
     }
 
-//    @RequestMapping("/allusers")
-//    public ResponseEntity<List<User>> getAllUsers(){
-//        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
-//
-//    }
-//
-//    @RequestMapping(value ="/alltasks")
-//    public ResponseEntity<List<Task>> getAllTasks(){
-//        return new ResponseEntity<>(taskService.findAll(), HttpStatus.OK);
-//
-//    }
+    @RequestMapping(value ="/alltasks")
+    public ResponseEntity<List<Task>> getAllTasks(){
+        return new ResponseEntity<>(taskService.findAll(), HttpStatus.OK);
+
+    }
 }
