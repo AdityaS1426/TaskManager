@@ -1,6 +1,7 @@
 package com.booleans.taskmanagement.service;
 
 import com.booleans.taskmanagement.model.Task;
+import com.booleans.taskmanagement.model.TaskInfo;
 import com.booleans.taskmanagement.model.User;
 
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.List;
 public interface TaskService {
 
     void createTask(Task task);
+
+    TaskInfo createTaskInfo(TaskInfo task);
 
     void updateTask(Long id, Task task);
 

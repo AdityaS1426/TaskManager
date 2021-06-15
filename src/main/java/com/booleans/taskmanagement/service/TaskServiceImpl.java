@@ -1,5 +1,7 @@
 package com.booleans.taskmanagement.service;
 
+import com.booleans.taskmanagement.model.TaskInfo;
+import com.booleans.taskmanagement.repository.TaskInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.booleans.taskmanagement.model.Task;
@@ -12,15 +14,23 @@ import java.util.stream.Collectors;
 @Service
 public class TaskServiceImpl implements TaskService {
     private TaskRepository taskRepository;
+    private TaskInfoRepository taskInfoRepository;
 
     @Autowired
     public TaskServiceImpl(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
+        this.taskInfoRepository = taskInfoRepository;
     }
 
     @Override
     public void createTask(Task task) {
         taskRepository.save(task);
+    }
+
+    @Override
+    public TaskInfo createTaskInfo(TaskInfo task) {
+
+        return task;
     }
 
     @Override
