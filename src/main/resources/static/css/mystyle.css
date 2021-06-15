@@ -70,11 +70,6 @@ main.container {
     font-size: 1.5rem;
 }
 
-.my-error-background {
-    background-image: url("../images/error-background.jpg");
-    background-size: cover;
-}
-
 .my-button-selected,
 .my-button-selected:hover,
 .my-button-selected:focus,
