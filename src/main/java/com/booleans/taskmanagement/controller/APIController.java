@@ -37,17 +37,17 @@ public class APIController {
 
     @RequestMapping(value ="/alltasks")
     public ResponseEntity<ArrayList<TaskInfo>> getAllTasks(){
-        String oName;
+        //String oName;
         ArrayList<TaskInfo> tasks = new ArrayList<TaskInfo>();
         for (int i = 0; i < taskService.findAll().size(); i++){
             Task t = taskService.findAll().get(i);
-            if(t.getOwner().getName() != null){
-                oName = t.getOwner().getName();
-            } else{
-                oName = "null";
-            }
+//            if(t.getOwner().getName() != null){
+//                oName = t.getOwner().getName();
+//            } else{
+//                oName = "null";
+//            }
 
-            tasks.add(taskService.createTaskInfo(new TaskInfo(i+1, t.getName(), t.getDescription(), t.getDate(), t.isCompleted(), t.getCreatorName(), oName)));
+            tasks.add(taskService.createTaskInfo(new TaskInfo(i+1, t.getName(), t.getDescription(), t.getDate(), t.isCompleted(), t.getCreatorName(), t.getCreatorName())));
         }
         return new ResponseEntity<ArrayList<TaskInfo>>(tasks, HttpStatus.OK);
 
