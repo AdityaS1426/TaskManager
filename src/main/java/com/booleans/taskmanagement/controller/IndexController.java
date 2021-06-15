@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.booleans.taskmanagement.service.UserService;
 import com.booleans.taskmanagement.model.User;
+import com.booleans.taskmanagement.service.TaskService;
 
 import java.util.List;
 
@@ -16,10 +17,12 @@ import java.util.List;
 public class IndexController {
 
     private UserService userService;
+    private TaskService taskService;
 
     @Autowired
-    public IndexController(UserService userService) {
+    public IndexController(UserService userService, TaskService taskService) {
         this.userService = userService;
+        this.taskService = taskService;
     }
 
 
@@ -29,8 +32,14 @@ public class IndexController {
     }
 
     @RequestMapping("/allusers")
-    public ResponseEntity<List<User>> users(){
+    public ResponseEntity<List<User>> getAllUsers(){
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value ="/alltasks")
+    public ResponseEntity<List<Task>> getAllTasks(){
+        return new ResponseEntity<>(taskService.findAll(), HttpStatus.OK);
 
     }
 }
