@@ -18,6 +18,10 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
 
+                <li th:class="${activeTab == 'Calendar Generator'}? 'active nav-item mr-4' : 'nav-item mr-4'">
+                    <a class="nav-link" href="https://calendar-set-up-test.herokuapp.com/">Calendar Generator</a>
+                </li>
+
                 <!--Tasks list-->
                 <li th:class="${activeTab == 'tasks-list'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="isAuthenticated()">
