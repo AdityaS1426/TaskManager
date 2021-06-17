@@ -24,7 +24,6 @@
 
 
 
-    <P th:text="${canvasData}"></P>
     </div>
 
     <div id="showData" class="card mb-3">
@@ -36,10 +35,12 @@
     <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 </footer>
 <script th:inline="javascript">
-        var myCanvas = [[${canvasData}]];
-        console.log(myCanvas);
+    var myCanvas = [[${canvasData}]];
+</script>
+<script th:inline="javascript" type="text/javascript">
+$(function () {
         myCanvas = JSON.parse(myCanvas);
-        console.log(myCanvas);
+
 
 
         var col = [];
@@ -78,7 +79,9 @@
         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
         var divContainer = document.getElementById("showData");
         divContainer.innerHTML = "";
-        divContainer.appendChild(myCanvas);
+        divContainer.appendChild(table);
+
+        });
 
 </script>
 
