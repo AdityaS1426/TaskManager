@@ -71,6 +71,10 @@
                     sec:authorize="!isAuthenticated()">
                     <a class="nav-link" href="/login">Log In</a>
                 </li>
+                <li th:class="${activeTab == 'minilabs'}? 'active nav-item mr-4' : 'nav-item mr-4'"
+                    sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" href="https://booleans-website.herokuapp.com/labs" target="_blank">minilabs</a>
+                </li>
                 <li>
                     <form class="form-inline my-2 my-lg-0"
                           th:action="@{logout}" method="post"
