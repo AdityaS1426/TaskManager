@@ -57,13 +57,25 @@ public class APIController {
         return new ResponseEntity<ArrayList<TaskInfo>>(tasks, HttpStatus.OK);
 
     }
-    @RequestMapping(value ="/addtask", method = RequestMethod.POST)
-    public ResponseEntity<Object> addTask(@RequestParam(value = "name") String name,
-                                          @RequestParam(value = "desc") String desc,
-                                          @RequestParam(value = "date") LocalDate date,
-                                          @RequestParam(value = "creator") String creator){
+//    @RequestMapping(value ="/addtask", method = RequestMethod.POST)
+//    public ResponseEntity<Object> addTask(@RequestParam(value = "name") String name,
+//                                          @RequestParam(value = "desc") String desc,
+//                                          //@RequestParam(value = "date") LocalDate date,
+//                                          @RequestParam(value = "creator") String creator){
+//        //String oName;
+//        LocalDate date = LocalDate.now();
+//        taskService.createTask(new Task(name, desc, date, false, creator));
+//        return new ResponseEntity<Object>("done", HttpStatus.OK);
+//
+//    }
+    @RequestMapping(value ="/adduser", method = RequestMethod.POST)
+    public ResponseEntity<Object> addTask(@RequestParam(value = "email") String email,
+                                          @RequestParam(value = "name") String name,
+                                          //@RequestParam(value = "date") LocalDate date,
+                                          @RequestParam(value = "password") String password){
         //String oName;
-        taskService.createTask(new Task(name, desc, date, false, creator));
+
+        userService.createUser(new User(email, name, password, "none"));
         return new ResponseEntity<Object>("done", HttpStatus.OK);
 
     }
