@@ -56,6 +56,10 @@
                 <li th:class="${activeTab == 'myconnect'}? 'active nav-item mr-4' : 'nav-item mr-4'">
                     <a class="nav-link" href="/myconnect">MyConnect</a>
                 </li>
+                <li th:class="${activeTab == 'minilabs'}? 'active nav-item mr-4' : 'nav-item mr-4'"
+                    sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" href="https://booleans-website.herokuapp.com/labs" target="_blank">Minilabs</a>
+                </li>
 
             </ul>
 
@@ -70,10 +74,6 @@
                 <li th:class="${activeTab == 'login'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="!isAuthenticated()">
                     <a class="nav-link" href="/login">Log In</a>
-                </li>
-                <li th:class="${activeTab == 'minilabs'}? 'active nav-item mr-4' : 'nav-item mr-4'"
-                    sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" href="https://booleans-website.herokuapp.com/labs" target="_blank">Minilabs</a>
                 </li>
                 <li>
                     <form class="form-inline my-2 my-lg-0"
