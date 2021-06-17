@@ -1,5 +1,6 @@
 package myconnect;
 
+import com.google.api.client.json.Json;
 import com.google.gson.*;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -33,13 +34,12 @@ public class MyConnect {
 
             return jArray;
 
-
-
-
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            JsonArray exceptionArray= new JsonArray();
+            exceptionArray.add(e.getMessage());
+            return exceptionArray;
         }
-        return new JsonArray();
+
     }
 
     public static void main(String args[]){

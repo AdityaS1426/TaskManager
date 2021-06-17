@@ -1,12 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
     <title>Title</title>
 </head>
 <body>
 
-<p th:text="${canvasData}"></p>
+<main class="container">
+    <div class="card mb-3">
+    <header>
+        <!--/*/ <th:block th:include="fragments/header :: header('about')"></th:block> /*/-->
+    </header>
+    <form id="Fact" action="/myconnect" method="POST" style="display:block;">
+        <label for="totID">Please enter your AP ID token from Myconnect</label>
+        <input name="totID" id="totID" >
+        <input type="hidden"
+               th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}"/>
+        <button>Go!</button>
+    </form>
+
+
+
+
+    </div>
+
+    <div id="showData" class="card mb-3">
+        Display results here
+    </div>
+</main>
+
+<footer class="footer">
+    <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+</footer>
+<script th:inline="javascript">
+    var myCanvas = [[${canvasData}]];
+</script>
+<script th:inline="javascript" type="text/javascript">
+$(function () {
+        myCanvas = JSON.parse(myCanvas);
+
+
+
+        var col = [];
+        for (var i = 0; i < myCanvas.length; i++) {
+            for (var key in myCanvas[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myCanvas.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = myCanvas[i][col[j]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+
+        });
+
+</script>
+
+
 
 </body>
 </html>

@@ -18,6 +18,10 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
 
+                <li th:class="${activeTab == 'Calendar Generator'}? 'active nav-item mr-4' : 'nav-item mr-4'">
+                    <a class="nav-link" href="https://calendar-set-up-test.herokuapp.com/">Calendar Generator</a>
+                </li>
+
                 <!--Tasks list-->
                 <li th:class="${activeTab == 'tasks-list'}? 'active nav-item mr-4' : 'nav-item mr-4'"
                     sec:authorize="isAuthenticated()">
@@ -49,12 +53,22 @@
                 </li>
 
                 <!--About-->
-                <li th:class="${activeTab == 'about'}? 'active nav-item mr-4' : 'nav-item mr-4'">
-                    <a class="nav-link" href="/about">About</a>
+
+
+                <li th:class="${activeTab == 'cross'}? 'active nav-item mr-4' : 'nav-item mr-4'">
+                    <a class="nav-link" href="cross.html">Crossover</a>
                 </li>
 
                 <li th:class="${activeTab == 'myconnect'}? 'active nav-item mr-4' : 'nav-item mr-4'">
-                    <a class="nav-link" href="/myconnect">myconnect</a>
+                    <a class="nav-link" href="/myconnect">MyConnect</a>
+                </li>
+                <li th:class="${activeTab == 'minilabs'}? 'active nav-item mr-4' : 'nav-item mr-4'"
+                    sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" href="https://booleans-website.herokuapp.com/labs" target="_blank">Minilabs</a>
+                </li>
+
+                <li th:class="${activeTab == 'about'}? 'active nav-item mr-4' : 'nav-item mr-4'">
+                    <a class="nav-link" href="/about">About</a>
                 </li>
 
             </ul>

@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.booleans.taskmanagement.service.UserService;
 import com.booleans.taskmanagement.model.User;
 import com.booleans.taskmanagement.service.TaskService;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,9 +50,33 @@ public class APIController {
 //                oName = "null";
 //            }
 
-            tasks.add(taskService.createTaskInfo(new TaskInfo(i+1, t.getName(), t.getDescription(), t.getDate(), t.isCompleted(), t.getCreatorName(), t.getCreatorName())));
+            try{tasks.add(taskService.createTaskInfo(new TaskInfo(i+1, t.getName(), t.getDescription(), t.getDate(), t.isCompleted(), t.getCreatorName(), t.getOwner().getName())));} catch (Exception e) {
+                tasks.add(taskService.createTaskInfo(new TaskInfo(i+1, t.getName(), t.getDescription(), t.getDate(), t.isCompleted(), t.getCreatorName(), "None")));
+            }
         }
         return new ResponseEntity<ArrayList<TaskInfo>>(tasks, HttpStatus.OK);
+
+    }
+//    @RequestMapping(value ="/addtask", method = RequestMethod.POST)
+//    public ResponseEntity<Object> addTask(@RequestParam(value = "name") String name,
+//                                          @RequestParam(value = "desc") String desc,
+//                                          //@RequestParam(value = "date") LocalDate date,
+//                                          @RequestParam(value = "creator") String creator){
+//        //String oName;
+//        LocalDate date = LocalDate.now();
+//        taskService.createTask(new Task(name, desc, date, false, creator));
+//        return new ResponseEntity<Object>("done", HttpStatus.OK);
+//
+//    }
+    @RequestMapping(value ="/adduser", method = RequestMethod.POST)
+    public ResponseEntity<Object> addTask(@RequestParam(value = "email") String email,
+                                          @RequestParam(value = "name") String name,
+                                          //@RequestParam(value = "date") LocalDate date,
+                                          @RequestParam(value = "password") String password){
+        //String oName;
+
+        userService.createUser(new User(email, name, password, "none"));
+        return new ResponseEntity<Object>("done", HttpStatus.OK);
 
     }
 }

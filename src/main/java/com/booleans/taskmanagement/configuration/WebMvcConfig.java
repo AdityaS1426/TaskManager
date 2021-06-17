@@ -31,7 +31,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/webjars/")
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
                 .resourceChain(true).addResolver(new PathResourceResolver());
+
+        registry.addResourceHandler("/js/**")
+                .addResourceLocations(("classpath:/static/js/"))
+                .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
+                .resourceChain(true).addResolver(new PathResourceResolver());
     }
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
