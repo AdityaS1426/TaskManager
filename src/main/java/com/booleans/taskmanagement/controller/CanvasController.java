@@ -17,7 +17,8 @@ public class CanvasController {
 
 
         if (token.equals("default")) {
-            token = "2573~jiT8XF7CGDmRznvjPJtW2VMYapYeaJBaA5XY0xXc2laDTR4Wc54Jit6RSzdOmyjT";
+            model.addAttribute("canvasData","Your info will be displayed here");
+            return "views/myconnect";
         }
 
         JsonArray jArray = MyConnect.useBearerToken(token);
