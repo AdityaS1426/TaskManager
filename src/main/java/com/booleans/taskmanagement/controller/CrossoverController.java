@@ -23,7 +23,7 @@ public class CrossoverController {
         //comments.add("test");
         //comments.add("test2");
         //model.addAttribute("comments", comments);
-        return "views/crossover";
+        return "views/cross";
     }
 
 
