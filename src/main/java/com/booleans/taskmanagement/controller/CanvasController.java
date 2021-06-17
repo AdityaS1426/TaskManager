@@ -10,15 +10,18 @@ import myconnect.MyConnect;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CanvasController {
 
 
     @GetMapping("/myconnect")
+
+    //@RequestMapping(value = "/views/ID", method = {RequestMethod.GET, RequestMethod.POST})
     public String showCanvasData(Model model) {
-
-
 
 
         JsonArray jArray = MyConnect.useBearerToken("2573~jiT8XF7CGDmRznvjPJtW2VMYapYeaJBaA5XY0xXc2laDTR4Wc54Jit6RSzdOmyjT");

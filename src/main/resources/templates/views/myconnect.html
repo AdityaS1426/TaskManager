@@ -5,8 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-
-<p th:text="${canvasData}"></p>
+<div>
+    <form id="Fact" action="/views/ID" method="POST" >
+        <label for="totID">Please enter your AP ID token from Myconnect</label>
+        <input name="totID" id="totID" >
+        <button>Go!</button>
+    </form>
+    <p th:text="${canvasData}"></p>
+</div>
 
 </body>
 </html>
