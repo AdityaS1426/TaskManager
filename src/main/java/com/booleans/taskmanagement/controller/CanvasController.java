@@ -57,8 +57,10 @@ public class CanvasController {
     public String showCanvasData(@RequestParam(name="totID",required = false) String token, Model model) {
 
         System.out.println(token);
-        model.addAttribute("canvasData", token);
-        return "views/myconnect";
+
+        return makeAndDisplayCanvasRequestWithToken(token,model);
+
+
 
         //makeAndDisplayCanvasRequestWithToken("default",model);
 
