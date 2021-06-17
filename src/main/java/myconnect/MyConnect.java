@@ -35,9 +35,11 @@ public class MyConnect {
             return jArray;
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            JsonArray exceptionArray= new JsonArray();
+            exceptionArray.add(e.getMessage());
+            return exceptionArray;
         }
-        return new JsonArray();
+
     }
 
     public static void main(String args[]){

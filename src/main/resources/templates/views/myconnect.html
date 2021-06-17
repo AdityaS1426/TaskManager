@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <div>
-    <form id="Fact" action="/views/ID" method="POST" >
+    <form id="Fact" action="/myconnect" method="POST" >
         <label for="totID">Please enter your AP ID token from Myconnect</label>
         <input name="totID" id="totID" >
+        <input type="hidden"
+               th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}"/>
         <button>Go!</button>
     </form>
     <p th:text="${canvasData}"></p>
+    <P th:text="${canvasData}"></P>
 </div>
 
 </body>

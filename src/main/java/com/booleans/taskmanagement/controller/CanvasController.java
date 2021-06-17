@@ -1,30 +1,27 @@
 
 package com.booleans.taskmanagement.controller;
 
-import com.google.api.client.json.Json;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import myconnect.MyConnect;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CanvasController {
 
 
-    @GetMapping("/myconnect")
-
-    //@RequestMapping(value = "/views/ID", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showCanvasData(Model model) {
+    public String makeAndDisplayCanvasRequestWithToken(String token, Model model) {
 
 
-        JsonArray jArray = MyConnect.useBearerToken("2573~jiT8XF7CGDmRznvjPJtW2VMYapYeaJBaA5XY0xXc2laDTR4Wc54Jit6RSzdOmyjT");
+        if (token.equals("default")) {
+            token = "2573~jiT8XF7CGDmRznvjPJtW2VMYapYeaJBaA5XY0xXc2laDTR4Wc54Jit6RSzdOmyjT";
+        }
+
+        JsonArray jArray = MyConnect.useBearerToken(token);
+
 
         JsonArray newJArray = new JsonArray();
 
@@ -52,9 +49,32 @@ public class CanvasController {
                 break;
             }
         }
+        return "views/myconnect";
+
+    }
+
+    @RequestMapping(value="/myconnect",method={RequestMethod.POST})
+    public String showCanvasData(@RequestParam(name="totID",required = false) String token, Model model) {
+
+        System.out.println(token);
+        model.addAttribute("canvasData", token);
+        return "views/myconnect";
+
+        //makeAndDisplayCanvasRequestWithToken("default",model);
 
 
-    return "views/myconnect";
+    }
+
+
+
+
+
+   @RequestMapping(value="/myconnect", method = {RequestMethod.GET})
+    public String showSampleCanvasData(Model model) {
+
+        System.out.println("GetMapping invoked");
+       return makeAndDisplayCanvasRequestWithToken("default",model);
+
     }
 
 
