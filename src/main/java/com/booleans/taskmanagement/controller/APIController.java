@@ -47,7 +47,9 @@ public class APIController {
 //                oName = "null";
 //            }
 
-            tasks.add(taskService.createTaskInfo(new TaskInfo(i+1, t.getName(), t.getDescription(), t.getDate(), t.isCompleted(), t.getCreatorName(), t.getCreatorName())));
+            try{tasks.add(taskService.createTaskInfo(new TaskInfo(i+1, t.getName(), t.getDescription(), t.getDate(), t.isCompleted(), t.getCreatorName(), t.getOwner().getName())));} catch (Exception e) {
+                tasks.add(taskService.createTaskInfo(new TaskInfo(i+1, t.getName(), t.getDescription(), t.getDate(), t.isCompleted(), t.getCreatorName(), "None")));
+            }
         }
         return new ResponseEntity<ArrayList<TaskInfo>>(tasks, HttpStatus.OK);
 
